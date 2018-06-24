@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# Jason Mess
+
+# 队列
+class Queue():
+    def __init__(self, size):
+        self.size = size
+        self.front = -1
+        self.rear = -1
+        self.queue = []
+
+    def enqueue(self, ele):
+        if self.isfull():
+            raise Exception("queue is full")
+        else:
+            self.queue.append(ele)
+            self.rear += 1
+
+    def dequeque(self):
+        if self.isempty():
+            raise Exception("queue is empty")
+        else:
+            self.queue.pop(0)
+            self.front += 1
+
+    def isfull(self):
+        return self.rear - self.front + 1 == self.size
+
+    def isempty(self):
+        return self.front == self.rear
+
+    def showQueue(self):
+        print(self.queue)
+
+q = Queue(10)
+for i in range(5):
+    q.enqueue(i)
+
+q.showQueue()
+
+for i in range(3):
+    q.dequeque()
+
+q.showQueue()
+print(q.isempty())
+
